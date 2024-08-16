@@ -10,6 +10,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.description|truncatechars:100 }}</p>
+                    <p class="card-text"><strong>Категория:</strong> {{ product.category.name }}</p>
+                    <p class="card-text"><strong>Цена:</strong> {{ product.price }} руб.</p>
                     <a href="{% url 'catalog:product_detail' product.pk %}" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
