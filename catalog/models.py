@@ -2,13 +2,11 @@ from django.db import models
 from django.utils import timezone
 from django.db import models, connection
 
-
 class Category(models.Model):
     @classmethod
     def truncate_table_restart_id(cls):
         with connection.cursor() as cursor:
             cursor.execute(f'TRUNCATE TABLE {cls._meta.db_table} RESTART IDENTITY CASCADE')
-
 
     name = models.CharField(
         max_length=150,
@@ -29,13 +27,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
 class Product(models.Model):
     @classmethod
     def truncate_table_restart_id(cls):
         with connection.cursor() as cursor:
             cursor.execute(f'TRUNCATE TABLE {cls._meta.db_table} RESTART IDENTITY CASCADE')
-
 
     name = models.CharField(
         max_length=255,
@@ -62,7 +58,6 @@ class Product(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
 
     class Meta:
         verbose_name = "Товар"

@@ -1,5 +1,5 @@
 import json
-from django.core.management import BaseCommand
+from django.core.management.base import BaseCommand
 from catalog.models import Category, Product
 
 class Command(BaseCommand):
@@ -11,7 +11,7 @@ class Command(BaseCommand):
             return json.load(file)
 
     def handle(self, *args, **options):
-        # очищаем категории и товары
+        # Очищаем категории и товары
         Product.objects.all().delete()
         Category.objects.all().delete()
 
@@ -33,7 +33,7 @@ class Command(BaseCommand):
                     pk=item['pk'],
                     name=item['fields']['name'],
                     description=item['fields']['description'],
-                    image=item['fields'].get('photo', ''),
+                    image=item['fields'].get('image', ''),  # Используйте 'image', а не 'photo'
                     price=item['fields']['price'],
                     category=category,
                     created_at=item['fields']['created_at'],

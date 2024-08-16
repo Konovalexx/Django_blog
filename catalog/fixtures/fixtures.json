@@ -1,125 +1,112 @@
 [
-  {
+{
     "model": "catalog.category",
     "pk": 1,
     "fields": {
-      "name": "Сельхозживотные",
-      "description": "Тут представлены МРС, КРС, свиньи и птица"
+        "name": "Сельхозживотные",
+        "description": "Тут представлены МРС, КРС, свиньи и т.д."
     }
-  },
-  {
+},
+{
     "model": "catalog.category",
     "pk": 2,
     "fields": {
-      "name": "Рыбы",
-      "description": "Рыбы и водная биота для аквакультуры"
+        "name": "Рыбы",
+        "description": "Рыбы и водная биота для аквакультуры"
     }
-  },
-  {
+},
+{
     "model": "catalog.category",
     "pk": 3,
     "fields": {
-      "name": "Экзотические животные",
-      "description": "В этой категории представлены экзоты"
+        "name": "Экзотические животные",
+        "description": "В этой категории представлены экзоты"
     }
-  },
-  {
+},
+{
     "model": "catalog.category",
     "pk": 4,
     "fields": {
-      "name": "Птицы",
-      "description": "Категория по продаже кур, уток, перепелов и т.д.."
+        "name": "Птицы",
+        "description": "Категория по продаже кур, уток, перепелов и т.д.."
     }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 1,
-    "fields": {
-      "name": "Корова",
-      "description": "Высокоудойная корова, цвет черно-белый. При правильном кормлении дает не меньше 20 литров молока в сутки.",
-      "image": "catalog/photo/images.jpg",
-      "price": 150000,
-      "category": 1,
-      "created_at": "2024-08-11T13:21:17.612Z",
-      "updated_at": "2024-08-11T13:21:17.612Z"
-    }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 2,
     "fields": {
-      "name": "Коза",
-      "description": "Коза белая, среднеразмерная. Высокоудойная.",
-      "image": "catalog/photo/images_1.jpg",
-      "price": 30000,
-      "category": 1,
-      "created_at": "2024-08-11T13:24:19.267Z",
-      "updated_at": "2024-08-11T13:24:19.267Z"
+        "name": "Корова",
+        "description": "Высокоудойная корова, цвет черно-белый. При правильном кормлении дает не меньше 20 литров молока в сутки.",
+        "image": "catalog/photo/images_j7QaCFI.jpg",
+        "price": 150000,
+        "category": 1,
+        "created_at": "2024-08-16T15:21:20.849Z",
+        "updated_at": "2024-08-16T15:21:20.849Z"
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 3,
     "fields": {
-      "name": "Кабан-осеменитель",
-      "description": "Могучий кабан-осеменитель, вес 450 кг.",
-      "image": "catalog/photo/images_2.jpg",
-      "price": 200000,
-      "category": 1,
-      "created_at": "2024-08-11T13:27:28.025Z",
-      "updated_at": "2024-08-11T13:27:28.025Z"
+        "name": "Коза",
+        "description": "Коза белая, среднеразмерная. Высокоудойная.",
+        "image": "catalog/photo/images_1_SsGJAUm.jpg",
+        "price": 30000,
+        "category": 1,
+        "created_at": "2024-08-16T15:22:16.991Z",
+        "updated_at": "2024-08-16T15:22:16.991Z"
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 4,
     "fields": {
-      "name": "Курица ГМО",
-      "description": "Забирать самовывозом, не можем поймать. Да и страшновато как-то ловить. Выведена лабораторным путем, с добавлением генов крокодила. Питается мясом и рыбой.",
-      "image": "catalog/photo/3996e1a12e1811ee96d84ad64b19119b_upscaled.jpg",
-      "price": 1000000,
-      "category": null,
-      "created_at": "2024-08-11T13:32:50.918Z",
-      "updated_at": "2024-08-11T13:32:50.918Z"
+        "name": "Кабан-осеменитель",
+        "description": "Могучий кабан-осеменитель, вес 450 кг.",
+        "image": "catalog/photo/images_2_C9oOVLm.jpg",
+        "price": 200000,
+        "category": 1,
+        "created_at": "2024-08-16T15:23:06.557Z",
+        "updated_at": "2024-08-16T15:23:06.557Z"
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 5,
     "fields": {
-      "name": "Ежик ГМО",
-      "description": "Продам смеющегося ежа. Куплен в лаборатории ГМО организмов за 500 000 рублей.  Задолбал.",
-      "image": "catalog/photo/c67a47934fe311eeb5264659bdca6a39_upscaled.jpg",
-      "price": 10,
-      "category": 3,
-      "created_at": "2024-08-11T13:37:52.540Z",
-      "updated_at": "2024-08-11T13:37:52.540Z"
+        "name": "Курица ГМО",
+        "description": "Забирать самовывозом, не можем поймать. Да и страшновато как-то ловить. Выведена лабораторным путем, с добавлением генов крокодила. Питается мясом и рыбой.",
+        "image": "catalog/photo/3996e1a12e1811ee96d84ad64b19119b_upscaled_jRQirWe.jpg",
+        "price": 1000000,
+        "category": 3,
+        "created_at": "2024-08-16T15:32:17.101Z",
+        "updated_at": "2024-08-16T15:32:17.101Z"
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 6,
     "fields": {
-      "name": "Рыба-мутант",
-      "description": "Продам рыбу-мутанта.",
-      "image": "catalog/photo/images_3.jpg",
-      "price": 300000,
-      "category": 2,
-      "created_at": "2024-08-11T13:42:20.028Z",
-      "updated_at": "2024-08-11T13:42:20.028Z"
+        "name": "Ежик ГМО",
+        "description": "Продам смеющегося ежа. Куплен в лаборатории ГМО организмов за 500 000 рублей.  Задолбал.",
+        "image": "catalog/photo/c67a47934fe311eeb5264659bdca6a39_upscaled_U36xt9B.jpg",
+        "price": 1,
+        "category": 3,
+        "created_at": "2024-08-16T15:32:54.952Z",
+        "updated_at": "2024-08-16T15:32:54.952Z"
     }
-  },
-  {
+},
+{
     "model": "catalog.product",
     "pk": 7,
     "fields": {
-      "name": "Гигантская утка",
-      "description": "Утка гигантская, ГМО, 300 кг",
-      "image": "",
-      "price": 200000,
-      "category": 4,
-      "created_at": "2024-08-12T09:06:22.443Z",
-      "updated_at": "2024-08-12T09:06:22.443Z"
+        "name": "Рыба-мутант",
+        "description": "Продам рыбу-мутанта. Выведена в лаборатории с добавлением генов макаки.",
+        "image": "catalog/photo/images_3_5zonyX7.jpg",
+        "price": 300000,
+        "category": 2,
+        "created_at": "2024-08-16T15:34:37.200Z",
+        "updated_at": "2024-08-16T15:34:37.200Z"
     }
-  }
+}
 ]
