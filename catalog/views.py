@@ -13,6 +13,14 @@ class ProductDetailView(DetailView):
     template_name = 'catalog/product_detail.html'
     context_object_name = 'product'
 
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        # Обновление счетчика просмотров
+        product = self.get_object()
+        product.views_count += 1
+        product.save()
+        return response
+
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
