@@ -31,13 +31,15 @@ class Command(BaseCommand):
 
                 product = Product(
                     pk=item['pk'],
-                    name=item['fields']['name'],
-                    description=item['fields']['description'],
-                    image=item['fields'].get('image', ''),  # Используйте 'image', а не 'photo'
-                    price=item['fields']['price'],
-                    category=category,
+                    title=item['fields']['title'],  # Используем title вместо name
+                    slug=item['fields']['slug'],
+                    content=item['fields']['content'],
+                    preview=item['fields'].get('preview', ''),  # Используем preview
                     created_at=item['fields']['created_at'],
-                    updated_at=item['fields']['updated_at']
+                    is_published=item['fields']['is_published'],
+                    views_count=item['fields']['views_count'],
+                    category=category,
+                    price=item['fields']['price']
                 )
                 product.save()
 

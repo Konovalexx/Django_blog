@@ -1,4 +1,6 @@
-from django.db import models, connection
+from django.db import models
+from django.utils.text import slugify
+from django.db import connection
 
 class Category(models.Model):
     @classmethod
@@ -31,36 +33,50 @@ class Product(models.Model):
         with connection.cursor() as cursor:
             cursor.execute(f'TRUNCATE TABLE {cls._meta.db_table} RESTART IDENTITY CASCADE')
 
-    name = models.CharField(
+    title = models.CharField(
         max_length=255,
-        verbose_name="Наименование",
-        help_text="Введите название товара: ",
+        verbose_name="Заголовок",
+        help_text="Введите заголовок товара:",
     )
-    description = models.TextField(verbose_name="Описание", help_text="Опишите товар: ")
-    image = models.ImageField(
-        upload_to="catalog/photo",
+    slug = models.SlugField(
+        max_length=255,
+        unique=True,
+        verbose_name="URL-метка",
+        help_text="Введите URL-метку товара:",
+    )
+    content = models.TextField(
+        verbose_name="Содержимое",
+        help_text="Введите описание товара:",
+    )
+    preview = models.ImageField(
+        upload_to="catalog/previews",
         blank=True,
         null=True,
-        verbose_name="Фото",
-        help_text="Загрузите фото товара:",
+        verbose_name="Превью",
+        help_text="Загрузите изображение превью товара:",
     )
-    price = models.IntegerField(blank=True, null=True, verbose_name="Цена за покупку")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    is_published = models.BooleanField(default=True, verbose_name="Признак публикации")
+    views_count = models.PositiveIntegerField(default=0, verbose_name="Количество просмотров")
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
         verbose_name="Категория",
-        help_text="Введите название категории",
+        help_text="Выберите категорию товара:",
         blank=True,
         null=True,
         related_name="products",
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    price = models.IntegerField(
+        default=0,  # Значение по умолчанию
+        verbose_name="Цена",
+        help_text="Введите цену товара:",
+    )
 
-    class Meta:
-        verbose_name = "Товар"
-        verbose_name_plural = "Товары"
-        ordering = ["name", "price"]
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.title

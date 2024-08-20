@@ -1,112 +1,124 @@
 [
-{
+  {
     "model": "catalog.category",
     "pk": 1,
     "fields": {
-        "name": "РЎРµР»СЊС…РѕР·Р¶РёРІРѕС‚РЅС‹Рµ",
-        "description": "РўСѓС‚ РїСЂРµРґСЃС‚Р°РІР»РµРЅС‹ РњР РЎ, РљР РЎ, СЃРІРёРЅСЊРё Рё С‚.Рґ."
+      "name": "Сельхозживотные",
+      "description": "Тут представлены МРС, КРС, свиньи и т.д."
     }
-},
-{
+  },
+  {
     "model": "catalog.category",
     "pk": 2,
     "fields": {
-        "name": "Р С‹Р±С‹",
-        "description": "Р С‹Р±С‹ Рё РІРѕРґРЅР°СЏ Р±РёРѕС‚Р° РґР»СЏ Р°РєРІР°РєСѓР»СЊС‚СѓСЂС‹"
+      "name": "Рыбы",
+      "description": "Рыбы и водная биота для аквакультуры"
     }
-},
-{
+  },
+  {
     "model": "catalog.category",
     "pk": 3,
     "fields": {
-        "name": "Р­РєР·РѕС‚РёС‡РµСЃРєРёРµ Р¶РёРІРѕС‚РЅС‹Рµ",
-        "description": "Р’ СЌС‚РѕР№ РєР°С‚РµРіРѕСЂРёРё РїСЂРµРґСЃС‚Р°РІР»РµРЅС‹ СЌРєР·РѕС‚С‹"
+      "name": "Экзотические животные",
+      "description": "В этой категории представлены экзоты"
     }
-},
-{
+  },
+  {
     "model": "catalog.category",
     "pk": 4,
     "fields": {
-        "name": "РџС‚РёС†С‹",
-        "description": "РљР°С‚РµРіРѕСЂРёСЏ РїРѕ РїСЂРѕРґР°Р¶Рµ РєСѓСЂ, СѓС‚РѕРє, РїРµСЂРµРїРµР»РѕРІ Рё С‚.Рґ.."
+      "name": "Птицы",
+      "description": "Категория по продаже кур, уток, перепелов и т.д.."
     }
-},
-{
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "title": "Корова",
+      "slug": "korova",
+      "content": "Высокоудойная корова, цвет черно-белый. При правильном кормлении дает не меньше 20 литров молока в сутки.",
+      "preview": "catalog/previews/images.jpg",
+      "created_at": "2024-08-20T16:00:02.318Z",
+      "is_published": true,
+      "views_count": 0,
+      "category": 1,
+      "price": 150000
+    }
+  },
+  {
     "model": "catalog.product",
     "pk": 2,
     "fields": {
-        "name": "РљРѕСЂРѕРІР°",
-        "description": "Р’С‹СЃРѕРєРѕСѓРґРѕР№РЅР°СЏ РєРѕСЂРѕРІР°, С†РІРµС‚ С‡РµСЂРЅРѕ-Р±РµР»С‹Р№. РџСЂРё РїСЂР°РІРёР»СЊРЅРѕРј РєРѕСЂРјР»РµРЅРёРё РґР°РµС‚ РЅРµ РјРµРЅСЊС€Рµ 20 Р»РёС‚СЂРѕРІ РјРѕР»РѕРєР° РІ СЃСѓС‚РєРё.",
-        "image": "catalog/photo/images_j7QaCFI.jpg",
-        "price": 150000,
-        "category": 1,
-        "created_at": "2024-08-16T15:21:20.849Z",
-        "updated_at": "2024-08-16T15:21:20.849Z"
+      "title": "Коза",
+      "slug": "koza",
+      "content": "Коза белая, среднеразмерная. Высокоудойная.",
+      "preview": "catalog/previews/images_1.jpg",
+      "created_at": "2024-08-20T16:01:38.926Z",
+      "is_published": true,
+      "views_count": 0,
+      "category": 1,
+      "price": 30000
     }
-},
-{
+  },
+  {
     "model": "catalog.product",
     "pk": 3,
     "fields": {
-        "name": "РљРѕР·Р°",
-        "description": "РљРѕР·Р° Р±РµР»Р°СЏ, СЃСЂРµРґРЅРµСЂР°Р·РјРµСЂРЅР°СЏ. Р’С‹СЃРѕРєРѕСѓРґРѕР№РЅР°СЏ.",
-        "image": "catalog/photo/images_1_SsGJAUm.jpg",
-        "price": 30000,
-        "category": 1,
-        "created_at": "2024-08-16T15:22:16.991Z",
-        "updated_at": "2024-08-16T15:22:16.991Z"
+      "title": "Кабан-осеменитель",
+      "slug": "kaban-osemenitel",
+      "content": "Могучий кабан-осеменитель, вес 450 кг.",
+      "preview": "catalog/previews/images_2_XNzV9pJ.jpg",
+      "created_at": "2024-08-20T16:02:40.392Z",
+      "is_published": true,
+      "views_count": 0,
+      "category": 1,
+      "price": 200000
     }
-},
-{
+  },
+  {
     "model": "catalog.product",
     "pk": 4,
     "fields": {
-        "name": "РљР°Р±Р°РЅ-РѕСЃРµРјРµРЅРёС‚РµР»СЊ",
-        "description": "РњРѕРіСѓС‡РёР№ РєР°Р±Р°РЅ-РѕСЃРµРјРµРЅРёС‚РµР»СЊ, РІРµСЃ 450 РєРі.",
-        "image": "catalog/photo/images_2_C9oOVLm.jpg",
-        "price": 200000,
-        "category": 1,
-        "created_at": "2024-08-16T15:23:06.557Z",
-        "updated_at": "2024-08-16T15:23:06.557Z"
+      "title": "Курица ГМО",
+      "slug": "kurica-gmo",
+      "content": "Забирать самовывозом, не можем поймать. Да и страшновато как-то ловить. Выведена лабораторным путем, с добавлением генов крокодила. Питается мясом и рыбой.",
+      "preview": "catalog/previews/3996e1a12e1811ee96d84ad64b19119b_upscaled_jRQirWe.jpg",
+      "created_at": "2024-08-20T16:03:33.556Z",
+      "is_published": true,
+      "views_count": 0,
+      "category": 4,
+      "price": 1000000
     }
-},
-{
+  },
+  {
     "model": "catalog.product",
     "pk": 5,
     "fields": {
-        "name": "РљСѓСЂРёС†Р° Р“РњРћ",
-        "description": "Р—Р°Р±РёСЂР°С‚СЊ СЃР°РјРѕРІС‹РІРѕР·РѕРј, РЅРµ РјРѕР¶РµРј РїРѕР№РјР°С‚СЊ. Р”Р° Рё СЃС‚СЂР°С€РЅРѕРІР°С‚Рѕ РєР°Рє-С‚Рѕ Р»РѕРІРёС‚СЊ. Р’С‹РІРµРґРµРЅР° Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рј РїСѓС‚РµРј, СЃ РґРѕР±Р°РІР»РµРЅРёРµРј РіРµРЅРѕРІ РєСЂРѕРєРѕРґРёР»Р°. РџРёС‚Р°РµС‚СЃСЏ РјСЏСЃРѕРј Рё СЂС‹Р±РѕР№.",
-        "image": "catalog/photo/3996e1a12e1811ee96d84ad64b19119b_upscaled_jRQirWe.jpg",
-        "price": 1000000,
-        "category": 3,
-        "created_at": "2024-08-16T15:32:17.101Z",
-        "updated_at": "2024-08-16T15:32:17.101Z"
+      "title": "Ежик ГМО",
+      "slug": "ezhik-gmo",
+      "content": "Продам смеющегося ежа. Куплен в лаборатории ГМО организмов за 500 000 рублей. Задолбал.",
+      "preview": "catalog/previews/c67a47934fe311eeb5264659bdca6a39_upscaled.jpg",
+      "created_at": "2024-08-20T16:04:17.166Z",
+      "is_published": true,
+      "views_count": 0,
+      "category": 3,
+      "price": 1
     }
-},
-{
+  },
+  {
     "model": "catalog.product",
     "pk": 6,
     "fields": {
-        "name": "Р•Р¶РёРє Р“РњРћ",
-        "description": "РџСЂРѕРґР°Рј СЃРјРµСЋС‰РµРіРѕСЃСЏ РµР¶Р°. РљСѓРїР»РµРЅ РІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё Р“РњРћ РѕСЂРіР°РЅРёР·РјРѕРІ Р·Р° 500 000 СЂСѓР±Р»РµР№.  Р—Р°РґРѕР»Р±Р°Р».",
-        "image": "catalog/photo/c67a47934fe311eeb5264659bdca6a39_upscaled_U36xt9B.jpg",
-        "price": 1,
-        "category": 3,
-        "created_at": "2024-08-16T15:32:54.952Z",
-        "updated_at": "2024-08-16T15:32:54.952Z"
+      "title": "Рыба-мутант",
+      "slug": "ryba-mutant",
+      "content": "Продам рыбу-мутанта. Выведена в лаборатории с добавлением генов макаки.",
+      "preview": "catalog/previews/images_3.jpg",
+      "created_at": "2024-08-20T16:06:00.964Z",
+      "is_published": true,
+      "views_count": 0,
+      "category": 2,
+      "price": 200000
     }
-},
-{
-    "model": "catalog.product",
-    "pk": 7,
-    "fields": {
-        "name": "Р С‹Р±Р°-РјСѓС‚Р°РЅС‚",
-        "description": "РџСЂРѕРґР°Рј СЂС‹Р±Сѓ-РјСѓС‚Р°РЅС‚Р°. Р’С‹РІРµРґРµРЅР° РІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё СЃ РґРѕР±Р°РІР»РµРЅРёРµРј РіРµРЅРѕРІ РјР°РєР°РєРё.",
-        "image": "catalog/photo/images_3_5zonyX7.jpg",
-        "price": 300000,
-        "category": 2,
-        "created_at": "2024-08-16T15:34:37.200Z",
-        "updated_at": "2024-08-16T15:34:37.200Z"
-    }
-}
+  }
 ]

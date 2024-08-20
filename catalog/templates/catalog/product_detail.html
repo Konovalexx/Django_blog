@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
-{% load media_filters %}
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <img src="{{ object.image|mymedia }}" alt="{{ object.name }}" class="img-fluid">
-        </div>
-        <div class="col-md-6">
-            <h2>{{ object.name }}</h2>
-            <p>{{ object.description }}</p>
-            <p><strong>Цена:</strong> {{ object.price }} руб.</p>
-            <p><strong>Категория:</strong> {{ object.category.name }}</p>
-        </div>
-    </div>
+    <h1>{{ product.title }}</h1>
+    {% if product.preview %}
+    <img src="{{ product.preview.url }}" class="img-fluid" alt="{{ product.title }}">
+    {% endif %}
+    <p>{{ product.content }}</p>
+    <p><strong>Цена:</strong> {{ product.price }} руб.</p>
+    <p><strong>Дата создания:</strong> {{ product.created_at }}</p>
+    <p><strong>Количество просмотров:</strong> {{ product.views_count }}</p>
+    <p><strong>Категория:</strong> {{ product.category.name }}</p>
+    <a href="{% url 'catalog:product_update' product.slug %}" class="btn btn-secondary">Редактировать</a>
+    <a href="{% url 'catalog:product_delete' product.slug %}" class="btn btn-danger">Удалить</a>
+    <a href="{% url 'catalog:product_list' %}" class="btn btn-primary">Назад к списку</a>
 </div>
 {% endblock %}

@@ -4,16 +4,21 @@
 {% block content %}
 <div class="container">
     <div class="row text-center">
-        {% for product in object_list %}
-        <div class="col-3">
+        {% for product in products %}
+        <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-                <img src="{{ product.image|mymedia }}" class="card-img-top" alt="{{ product.name }}">
+                {% if product.preview %}
+                <img src="{{ product.preview.url }}" class="card-img-top" alt="{{ product.title }}">
+                {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description|truncatechars:100 }}</p>
-                    <p class="card-text"><strong>Категория:</strong> {{ product.category.name }}</p>
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text">{{ product.content|truncatewords:20 }}</p>
+                    {% if product.price %}
                     <p class="card-text"><strong>Цена:</strong> {{ product.price }} руб.</p>
-                    <a href="{% url 'catalog:product_detail' product.pk %}" class="btn btn-primary">Подробнее</a>
+                    {% else %}
+                    <p class="card-text text-muted">Цена не указана</p>
+                    {% endif %}
+                    <a href="{% url 'catalog:product_detail' product.slug %}" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
         </div>
