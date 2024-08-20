@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Список товаров</h1>
+    <a href="{% url 'catalog:product_create' %}" class="btn btn-primary">Создать новый товар</a>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                {% if product.preview %}
+                <img src="{{ product.preview.url }}" class="card-img-top" alt="{{ product.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text">{{ product.content|truncatewords:20 }}</p>
+                    <a href="{% url 'catalog:product_detail' product.slug %}" class="btn btn-primary">Подробнее</a>
+                    <a href="{% url 'catalog:product_update' product.slug %}" class="btn btn-secondary">Редактировать</a>
+                    <a href="{% url 'catalog:product_delete' product.slug %}" class="btn btn-danger">Удалить</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
