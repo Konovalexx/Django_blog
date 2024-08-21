@@ -1,14 +1,37 @@
 import json
+import chardet
 from django.core.management.base import BaseCommand
 from catalog.models import Category, Product
 
 class Command(BaseCommand):
 
     @staticmethod
+    def convert_to_utf8(file_path):
+        """Попытка прочитать и перекодировать файл в UTF-8."""
+        with open(file_path, 'rb') as file:
+            raw_data = file.read()
+            detected_encoding = chardet.detect(raw_data)['encoding']
+
+        if detected_encoding.lower() != 'utf-8':
+            # Перекодируем файл в UTF-8
+            decoded_data = raw_data.decode(detected_encoding)
+            with open(file_path, 'w', encoding='utf-8') as file:
+                file.write(decoded_data)
+            return True
+        return False
+
+    @staticmethod
     def json_read_fixtures():
-        """Читаем фикстуру категорий и продуктов"""
-        with open('catalog/fixtures/fixtures.json', 'r', encoding='utf-8') as file:
-            return json.load(file)
+        """Читаем фикстуру категорий и продуктов с попыткой перекодировки в UTF-8."""
+        file_path = 'catalog/fixtures/fixtures.json'
+        try:
+            with open(file_path, 'r', encoding='utf-8') as file:
+                return json.load(file)
+        except UnicodeDecodeError:
+            # Если возникает ошибка декодирования, пытаемся перекодировать файл
+            Command.convert_to_utf8(file_path)
+            with open(file_path, 'r', encoding='utf-8') as file:
+                return json.load(file)
 
     def handle(self, *args, **options):
         # Очищаем категории и товары

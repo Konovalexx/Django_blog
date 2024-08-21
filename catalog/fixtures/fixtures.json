@@ -1,154 +1,154 @@
-[
-  {
-    "model": "catalog.category",
-    "pk": 1,
-    "fields": {
-      "name": "Сельхозживотные",
-      "description": "Тут представлены МРС, КРС, свиньи и т.д."
-    }
-  },
-  {
-    "model": "catalog.category",
-    "pk": 2,
-    "fields": {
-      "name": "Рыбы",
-      "description": "Рыбы и водная биота для аквакультуры"
-    }
-  },
-  {
-    "model": "catalog.category",
-    "pk": 3,
-    "fields": {
-      "name": "Экзотические животные",
-      "description": "В этой категории представлены экзоты"
-    }
-  },
-  {
-    "model": "catalog.category",
-    "pk": 4,
-    "fields": {
-      "name": "Птицы",
-      "description": "Категория по продаже кур, уток, перепелов и т.д.."
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 1,
-    "fields": {
-      "title": "Корова",
-      "slug": "korova",
-      "content": "Высокоудойная корова, цвет черно-белый. При правильном кормлении дает не меньше 20 литров молока в сутки.",
-      "preview": "catalog/previews/images.jpg",
-      "created_at": "2024-08-20T16:00:02.318Z",
-      "is_published": true,
-      "views_count": 6,
-      "category": 1,
-      "price": 150000
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 2,
-    "fields": {
-      "title": "Коза",
-      "slug": "koza",
-      "content": "Коза белая, среднеразмерная. Высокоудойная. Прыгает вверх на 230 см.",
-      "preview": "catalog/previews/images_1.jpg",
-      "created_at": "2024-08-20T16:01:38.926Z",
-      "is_published": true,
-      "views_count": 1,
-      "category": 1,
-      "price": 32000
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 3,
-    "fields": {
-      "title": "Кабан-осеменитель",
-      "slug": "kaban-osemenitel",
-      "content": "Могучий кабан-осеменитель, вес 450 кг.",
-      "preview": "catalog/previews/images_2_XNzV9pJ.jpg",
-      "created_at": "2024-08-20T16:02:40.392Z",
-      "is_published": true,
-      "views_count": 1,
-      "category": 1,
-      "price": 200000
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 4,
-    "fields": {
-      "title": "Курица ГМО",
-      "slug": "kurica-gmo",
-      "content": "Забирать самовывозом, не можем поймать. Да и страшновато как-то ловить. Выведена лабораторным путем, с добавлением генов крокодила. Питается мясом и рыбой.",
-      "preview": "catalog/previews/3996e1a12e1811ee96d84ad64b19119b_upscaled_jRQirWe.jpg",
-      "created_at": "2024-08-20T16:03:33.556Z",
-      "is_published": true,
-      "views_count": 9,
-      "category": 4,
-      "price": 1000000
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 5,
-    "fields": {
-      "title": "Ежик ГМО",
-      "slug": "ezhik-gmo",
-      "content": "Продам смеющегося ежа. Куплен в лаборатории ГМО организмов за 500 000 рублей. Задолбал ржать.",
-      "preview": "catalog/previews/c67a47934fe311eeb5264659bdca6a39_upscaled.jpg",
-      "created_at": "2024-08-20T16:04:17.166Z",
-      "is_published": true,
-      "views_count": 3,
-      "category": 3,
-      "price": 1
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 6,
-    "fields": {
-      "title": "Рыба-мутант",
-      "slug": "ryba-mutant",
-      "content": "Продам рыбу-мутанта. Выведена в лаборатории с добавлением генов макаки.  Почему-то постоянно мигает, и смотрит из аквариума в телевизор и на людей. Нервирует, поэтому продам недорого",
-      "preview": "catalog/previews/images_3.jpg",
-      "created_at": "2024-08-20T16:06:00.964Z",
-      "is_published": true,
-      "views_count": 1,
-      "category": 2,
-      "price": 200000
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 7,
-    "fields": {
-      "title": "Енот импортный",
-      "slug": "enot-importnyj",
-      "content": "Называется Тануки. Привезен из Японии.  Модератор почему-то не хочет пропускать его фотографию!",
-      "preview": "",
-      "created_at": "2024-08-20T16:56:28.780Z",
-      "is_published": true,
-      "views_count": 0,
-      "category": 3,
-      "price": 250000
-    }
-  },
-  {
-    "model": "catalog.product",
-    "pk": 9,
-    "fields": {
-      "title": "Макака",
-      "slug": "makaka",
-      "content": "Продам макаку. Подарили. Вес 25 кг. В день съедает 3 кг фруктов и 1 кг мяса (предпочитает крольчатину). Веселая, прикольная, кидается камнями и прыгает. Сама ловит кур, кроликов и приносит домой. Иногда носит деньги.",
-      "preview": "catalog/previews/KMO_121006_03711_1_t218_105126.jpg",
-      "created_at": "2024-08-20T17:33:00.809Z",
-      "is_published": true,
-      "views_count": 7,
-      "category": 3,
-      "price": 1000000
-    }
-  }
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "РЎРµР»СЊС…РѕР·Р¶РёРІРѕС‚РЅС‹Рµ",
+      "description": "РўСѓС‚ РїСЂРµРґСЃС‚Р°РІР»РµРЅС‹ РњР РЎ, РљР РЎ, СЃРІРёРЅСЊРё Рё С‚.Рґ."
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Р С‹Р±С‹",
+      "description": "Р С‹Р±С‹ Рё РІРѕРґРЅР°СЏ Р±РёРѕС‚Р° РґР»СЏ Р°РєРІР°РєСѓР»СЊС‚СѓСЂС‹"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Р­РєР·РѕС‚РёС‡РµСЃРєРёРµ Р¶РёРІРѕС‚РЅС‹Рµ",
+      "description": "Р’ СЌС‚РѕР№ РєР°С‚РµРіРѕСЂРёРё РїСЂРµРґСЃС‚Р°РІР»РµРЅС‹ СЌРєР·РѕС‚С‹"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "name": "РџС‚РёС†С‹",
+      "description": "РљР°С‚РµРіРѕСЂРёСЏ РїРѕ РїСЂРѕРґР°Р¶Рµ РєСѓСЂ, СѓС‚РѕРє, РїРµСЂРµРїРµР»РѕРІ Рё С‚.Рґ.."
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "title": "РљРѕСЂРѕРІР°",
+      "slug": "korova",
+      "content": "Р’С‹СЃРѕРєРѕСѓРґРѕР№РЅР°СЏ РєРѕСЂРѕРІР°, С†РІРµС‚ С‡РµСЂРЅРѕ-Р±РµР»С‹Р№. РџСЂРё РїСЂР°РІРёР»СЊРЅРѕРј РєРѕСЂРјР»РµРЅРёРё РґР°РµС‚ РЅРµ РјРµРЅСЊС€Рµ 20 Р»РёС‚СЂРѕРІ РјРѕР»РѕРєР° РІ СЃСѓС‚РєРё.",
+      "preview": "catalog/previews/images.jpg",
+      "created_at": "2024-08-20T16:00:02.318Z",
+      "is_published": true,
+      "views_count": 6,
+      "category": 1,
+      "price": 150000
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "title": "РљРѕР·Р°",
+      "slug": "koza",
+      "content": "РљРѕР·Р° Р±РµР»Р°СЏ, СЃСЂРµРґРЅРµСЂР°Р·РјРµСЂРЅР°СЏ. Р’С‹СЃРѕРєРѕСѓРґРѕР№РЅР°СЏ. РџСЂС‹РіР°РµС‚ РІРІРµСЂС… РЅР° 230 СЃРј.",
+      "preview": "catalog/previews/images_1.jpg",
+      "created_at": "2024-08-20T16:01:38.926Z",
+      "is_published": true,
+      "views_count": 1,
+      "category": 1,
+      "price": 32000
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "title": "РљР°Р±Р°РЅ-РѕСЃРµРјРµРЅРёС‚РµР»СЊ",
+      "slug": "kaban-osemenitel",
+      "content": "РњРѕРіСѓС‡РёР№ РєР°Р±Р°РЅ-РѕСЃРµРјРµРЅРёС‚РµР»СЊ, РІРµСЃ 450 РєРі.",
+      "preview": "catalog/previews/images_2_XNzV9pJ.jpg",
+      "created_at": "2024-08-20T16:02:40.392Z",
+      "is_published": true,
+      "views_count": 1,
+      "category": 1,
+      "price": 200000
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "title": "РљСѓСЂРёС†Р° Р“РњРћ",
+      "slug": "kurica-gmo",
+      "content": "Р—Р°Р±РёСЂР°С‚СЊ СЃР°РјРѕРІС‹РІРѕР·РѕРј, РЅРµ РјРѕР¶РµРј РїРѕР№РјР°С‚СЊ. Р”Р° Рё СЃС‚СЂР°С€РЅРѕРІР°С‚Рѕ РєР°Рє-С‚Рѕ Р»РѕРІРёС‚СЊ. Р’С‹РІРµРґРµРЅР° Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рј РїСѓС‚РµРј, СЃ РґРѕР±Р°РІР»РµРЅРёРµРј РіРµРЅРѕРІ РєСЂРѕРєРѕРґРёР»Р°. РџРёС‚Р°РµС‚СЃСЏ РјСЏСЃРѕРј Рё СЂС‹Р±РѕР№.",
+      "preview": "catalog/previews/3996e1a12e1811ee96d84ad64b19119b_upscaled_jRQirWe.jpg",
+      "created_at": "2024-08-20T16:03:33.556Z",
+      "is_published": true,
+      "views_count": 9,
+      "category": 4,
+      "price": 1000000
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+      "title": "Р•Р¶РёРє Р“РњРћ",
+      "slug": "ezhik-gmo",
+      "content": "РџСЂРѕРґР°Рј СЃРјРµСЋС‰РµРіРѕСЃСЏ РµР¶Р°. РљСѓРїР»РµРЅ РІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё Р“РњРћ РѕСЂРіР°РЅРёР·РјРѕРІ Р·Р° 500 000 СЂСѓР±Р»РµР№. Р—Р°РґРѕР»Р±Р°Р» СЂР¶Р°С‚СЊ.",
+      "preview": "catalog/previews/c67a47934fe311eeb5264659bdca6a39_upscaled.jpg",
+      "created_at": "2024-08-20T16:04:17.166Z",
+      "is_published": true,
+      "views_count": 3,
+      "category": 3,
+      "price": 1
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+      "title": "Р С‹Р±Р°-РјСѓС‚Р°РЅС‚",
+      "slug": "ryba-mutant",
+      "content": "РџСЂРѕРґР°Рј СЂС‹Р±Сѓ-РјСѓС‚Р°РЅС‚Р°. Р’С‹РІРµРґРµРЅР° РІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё СЃ РґРѕР±Р°РІР»РµРЅРёРµРј РіРµРЅРѕРІ РјР°РєР°РєРё.  РџРѕС‡РµРјСѓ-С‚Рѕ РїРѕСЃС‚РѕСЏРЅРЅРѕ РјРёРіР°РµС‚, Рё СЃРјРѕС‚СЂРёС‚ РёР· Р°РєРІР°СЂРёСѓРјР° РІ С‚РµР»РµРІРёР·РѕСЂ Рё РЅР° Р»СЋРґРµР№. РќРµСЂРІРёСЂСѓРµС‚, РїРѕСЌС‚РѕРјСѓ РїСЂРѕРґР°Рј РЅРµРґРѕСЂРѕРіРѕ",
+      "preview": "catalog/previews/images_3.jpg",
+      "created_at": "2024-08-20T16:06:00.964Z",
+      "is_published": true,
+      "views_count": 1,
+      "category": 2,
+      "price": 200000
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "title": "Р•РЅРѕС‚ РёРјРїРѕСЂС‚РЅС‹Р№",
+      "slug": "enot-importnyj",
+      "content": "РќР°Р·С‹РІР°РµС‚СЃСЏ РўР°РЅСѓРєРё. РџСЂРёРІРµР·РµРЅ РёР· РЇРїРѕРЅРёРё.  РњРѕРґРµСЂР°С‚РѕСЂ РїРѕС‡РµРјСѓ-С‚Рѕ РЅРµ С…РѕС‡РµС‚ РїСЂРѕРїСѓСЃРєР°С‚СЊ РµРіРѕ С„РѕС‚РѕРіСЂР°С„РёСЋ!",
+      "preview": "",
+      "created_at": "2024-08-20T16:56:28.780Z",
+      "is_published": true,
+      "views_count": 0,
+      "category": 3,
+      "price": 250000
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "title": "РњР°РєР°РєР°",
+      "slug": "makaka",
+      "content": "РџСЂРѕРґР°Рј РјР°РєР°РєСѓ. РџРѕРґР°СЂРёР»Рё. Р’РµСЃ 25 РєРі. Р’ РґРµРЅСЊ СЃСЉРµРґР°РµС‚ 3 РєРі С„СЂСѓРєС‚РѕРІ Рё 1 РєРі РјСЏСЃР° (РїСЂРµРґРїРѕС‡РёС‚Р°РµС‚ РєСЂРѕР»СЊС‡Р°С‚РёРЅСѓ). Р’РµСЃРµР»Р°СЏ, РїСЂРёРєРѕР»СЊРЅР°СЏ, РєРёРґР°РµС‚СЃСЏ РєР°РјРЅСЏРјРё Рё РїСЂС‹РіР°РµС‚. РЎР°РјР° Р»РѕРІРёС‚ РєСѓСЂ, РєСЂРѕР»РёРєРѕРІ Рё РїСЂРёРЅРѕСЃРёС‚ РґРѕРјРѕР№. РРЅРѕРіРґР° РЅРѕСЃРёС‚ РґРµРЅСЊРіРё.",
+      "preview": "catalog/previews/KMO_121006_03711_1_t218_105126.jpg",
+      "created_at": "2024-08-20T17:33:00.809Z",
+      "is_published": true,
+      "views_count": 7,
+      "category": 3,
+      "price": 1000000
+    }
+  }
 ]
