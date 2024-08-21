@@ -41,7 +41,7 @@
       "preview": "catalog/previews/images.jpg",
       "created_at": "2024-08-20T16:00:02.318Z",
       "is_published": true,
-      "views_count": 0,
+      "views_count": 6,
       "category": 1,
       "price": 150000
     }
@@ -52,13 +52,13 @@
     "fields": {
       "title": "Коза",
       "slug": "koza",
-      "content": "Коза белая, среднеразмерная. Высокоудойная.",
+      "content": "Коза белая, среднеразмерная. Высокоудойная. Прыгает вверх на 230 см.",
       "preview": "catalog/previews/images_1.jpg",
       "created_at": "2024-08-20T16:01:38.926Z",
       "is_published": true,
-      "views_count": 0,
+      "views_count": 1,
       "category": 1,
-      "price": 30000
+      "price": 32000
     }
   },
   {
@@ -71,7 +71,7 @@
       "preview": "catalog/previews/images_2_XNzV9pJ.jpg",
       "created_at": "2024-08-20T16:02:40.392Z",
       "is_published": true,
-      "views_count": 0,
+      "views_count": 1,
       "category": 1,
       "price": 200000
     }
@@ -86,7 +86,7 @@
       "preview": "catalog/previews/3996e1a12e1811ee96d84ad64b19119b_upscaled_jRQirWe.jpg",
       "created_at": "2024-08-20T16:03:33.556Z",
       "is_published": true,
-      "views_count": 0,
+      "views_count": 9,
       "category": 4,
       "price": 1000000
     }
@@ -97,11 +97,11 @@
     "fields": {
       "title": "Ежик ГМО",
       "slug": "ezhik-gmo",
-      "content": "Продам смеющегося ежа. Куплен в лаборатории ГМО организмов за 500 000 рублей. Задолбал.",
+      "content": "Продам смеющегося ежа. Куплен в лаборатории ГМО организмов за 500 000 рублей. Задолбал ржать.",
       "preview": "catalog/previews/c67a47934fe311eeb5264659bdca6a39_upscaled.jpg",
       "created_at": "2024-08-20T16:04:17.166Z",
       "is_published": true,
-      "views_count": 0,
+      "views_count": 3,
       "category": 3,
       "price": 1
     }
@@ -112,13 +112,43 @@
     "fields": {
       "title": "Рыба-мутант",
       "slug": "ryba-mutant",
-      "content": "Продам рыбу-мутанта. Выведена в лаборатории с добавлением генов макаки.",
+      "content": "Продам рыбу-мутанта. Выведена в лаборатории с добавлением генов макаки.  Почему-то постоянно мигает, и смотрит из аквариума в телевизор и на людей. Нервирует, поэтому продам недорого",
       "preview": "catalog/previews/images_3.jpg",
       "created_at": "2024-08-20T16:06:00.964Z",
       "is_published": true,
-      "views_count": 0,
+      "views_count": 1,
       "category": 2,
       "price": 200000
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "title": "Енот импортный",
+      "slug": "enot-importnyj",
+      "content": "Называется Тануки. Привезен из Японии.  Модератор почему-то не хочет пропускать его фотографию!",
+      "preview": "",
+      "created_at": "2024-08-20T16:56:28.780Z",
+      "is_published": true,
+      "views_count": 0,
+      "category": 3,
+      "price": 250000
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+      "title": "Макака",
+      "slug": "makaka",
+      "content": "Продам макаку. Подарили. Вес 25 кг. В день съедает 3 кг фруктов и 1 кг мяса (предпочитает крольчатину). Веселая, прикольная, кидается камнями и прыгает. Сама ловит кур, кроликов и приносит домой. Иногда носит деньги.",
+      "preview": "catalog/previews/KMO_121006_03711_1_t218_105126.jpg",
+      "created_at": "2024-08-20T17:33:00.809Z",
+      "is_published": true,
+      "views_count": 7,
+      "category": 3,
+      "price": 1000000
     }
   }
 ]
