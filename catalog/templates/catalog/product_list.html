@@ -4,8 +4,8 @@
 
 {% block content %}
 <div class="container">
-    <h1>Список продуктов</h1>
-    <a href="{% url 'catalog:product_create' %}" class="btn btn-primary mb-4">Добавить продукт</a>
+    <h1>Список товаров</h1>
+    <a href="{% url 'catalog:product_create' %}" class="btn btn-primary mb-4">Добавить товар</a>
     <div class="row">
         {% for product in products %}
         <div class="col-md-4">
