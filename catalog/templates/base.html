@@ -12,7 +12,7 @@
             <h5 class="my-0 mr-md-auto font-weight-normal">Поселок Путь Ильича</h5>
             <nav class="ms-5">
                 <a class="p-2 btn btn-outline-primary" href="/">Каталог</a>
-                <a class="p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>
+                <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts' %}">Контакты</a>
             </nav>
         </div>
 
@@ -32,7 +32,10 @@
         <div class="row">
             <div class="col-12 col-md">
                 <p>Привет!</p>
-                <small class="d-block mb-3 text-muted">&copy; 2024</small>
+                <small class="d-block mb-3 text-muted">&copy; 2024 </small>
+                <small class="d-block mb-3 text-muted">
+                    Запрещается рекламировать казино, игры на деньги, криптовалюты, радары для обмана полиции и другие антизаконные действия.
+                </small>
             </div>
             <div class="col-6 col-md">
                 <h5>Категории</h5>
@@ -53,7 +56,7 @@
             <div class="col-6 col-md">
                 <h5>О нас</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="/contacts/">Контакты</a></li>
+                    <li><a class="text-muted" href="{% url 'catalog:contacts' %}">Контакты</a></li>
                 </ul>
             </div>
         </div>

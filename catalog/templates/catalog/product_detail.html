@@ -11,6 +11,13 @@
     <p><strong>Дата создания:</strong> {{ product.created_at }}</p>
     <p><strong>Количество просмотров:</strong> {{ product.views_count }}</p>
     <p><strong>Категория:</strong> {{ product.category.name }}</p>
+    <p><strong>Версия:</strong>
+        {% if current_version %}
+            {{ current_version.version_name }}
+        {% else %}
+            Нет активных версий
+        {% endif %}
+    </p>
     <a href="{% url 'catalog:product_update' product.slug %}" class="btn btn-secondary">Редактировать</a>
     <a href="{% url 'catalog:product_delete' product.slug %}" class="btn btn-danger">Удалить</a>
     <a href="{% url 'catalog:product_list' %}" class="btn btn-primary">Назад к списку</a>

@@ -80,3 +80,30 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+class ProductVersion(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='versions',
+        verbose_name="Продукт",
+    )
+    version_number = models.CharField(
+        max_length=50,
+        verbose_name="Номер версии",
+    )
+    version_name = models.CharField(
+        max_length=255,
+        verbose_name="Название версии",
+    )
+    is_current = models.BooleanField(
+        default=False,
+        verbose_name="Текущая версия",
+    )
+
+    class Meta:
+        verbose_name = "Версия продукта"
+        verbose_name_plural = "Версии продуктов"
+
+    def __str__(self):
+        return f"{self.product.title} - {self.version_name} ({self.version_number})"
