@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.db import connection
+from django.conf import settings
 
 class Category(models.Model):
     @classmethod
@@ -37,14 +38,18 @@ class Product(models.Model):
         max_length=255,
         verbose_name="Заголовок",
         help_text="Введите заголовок товара:",
+        null=True,  # Разрешить null
+        blank=True,  # Разрешить пустое значение в формах
     )
     slug = models.SlugField(
         max_length=255,
         unique=True,
         verbose_name="URL-метка",
         help_text="Введите URL-метку товара:",
+        null=True,  # Разрешить null
     )
     content = models.TextField(
+        default='',  # Устанавливаем значение по умолчанию
         verbose_name="Содержимое",
         help_text="Введите описание товара:",
     )
@@ -68,9 +73,16 @@ class Product(models.Model):
         related_name="products",
     )
     price = models.IntegerField(
-        default=0,  # Значение по умолчанию
+        default=0,
         verbose_name="Цена",
         help_text="Введите цену товара:",
+    )
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        related_name='products',
+        verbose_name="Создатель",
+        null=True,
     )
 
     def save(self, *args, **kwargs):

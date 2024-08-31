@@ -11,8 +11,17 @@
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
             <h5 class="my-0 mr-md-auto font-weight-normal">Поселок Путь Ильича</h5>
             <nav class="ms-5">
-                <a class="p-2 btn btn-outline-primary" href="/">Каталог</a>
+                <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_list' %}">Каталог</a>
                 <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts' %}">Контакты</a>
+                {% if user.is_authenticated %}
+                    <span class="p-2">Привет, {{ user.email }}!</span>
+                    <form action="{% url 'users:logout' %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="p-2 btn btn-outline-primary">Выход</button>
+                    </form>
+                {% else %}
+                    <a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Вход</a>
+                {% endif %}
             </nav>
         </div>
 
@@ -32,7 +41,7 @@
         <div class="row">
             <div class="col-12 col-md">
                 <p>Привет!</p>
-                <small class="d-block mb-3 text-muted">&copy; 2024 </small>
+                <small class="d-block mb-3 text-muted">&copy; 2024</small>
                 <small class="d-block mb-3 text-muted">
                     Запрещается рекламировать казино, игры на деньги, криптовалюты, радары для обмана полиции и другие антизаконные действия.
                 </small>

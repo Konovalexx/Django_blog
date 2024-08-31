@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
     'catalog',
 ]
 
@@ -42,7 +43,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'users', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,3 +101,22 @@ STATICFILES_DIRS = [
 # Медиафайлы (пользовательский контент)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# Настройки email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'  # Исправлено
+EMAIL_PORT = 2525
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'konovalex@mail.ru'
+EMAIL_HOST_PASSWORD = 'parol'
+DEFAULT_FROM_EMAIL = 'konovalex@mail.ru'
+
+# URL-адрес сайта
+SITE_URL = 'http://localhost:8000'
+
+from django.urls import reverse_lazy
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = reverse_lazy('catalog:product_list')

@@ -1,8 +1,10 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.shortcuts import get_object_or_404
+from django.http import HttpResponseForbidden
 from catalog.models import Product, ProductVersion
 from catalog.forms import ProductForm, ProductVersionForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404
 
 class ProductListView(ListView):
     model = Product
@@ -22,20 +24,17 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Получаем текущую версию продукта
-        current_version = self.object.versions.filter(is_current=True).first()
-        context['current_version'] = current_version
+        context['current_version'] = self.object.versions.filter(is_current=True).first()
         return context
 
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)
-        # Обновление счетчика просмотров
         product = self.get_object()
         product.views_count += 1
         product.save()
         return response
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_form.html'
@@ -45,21 +44,25 @@ class ProductCreateView(CreateView):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_form.html'
     success_url = reverse_lazy('catalog:product_list')
 
+    def dispatch(self, request, *args, **kwargs):
+        product = self.get_object()
+        if product.created_by != request.user:
+            return HttpResponseForbidden("Вы не можете редактировать этот товар.")
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         response = super().form_valid(form)
-        # Обработка версии продукта при обновлении
         version_number = self.request.POST.get('version_number')
         version_name = self.request.POST.get('version_name')
         is_current = 'is_current' in self.request.POST
 
         if version_number and version_name:
-            # Обновляем текущую версию, если новая версия указана как активная
             if is_current:
                 ProductVersion.objects.filter(product=self.object).update(is_current=False)
             ProductVersion.objects.update_or_create(
@@ -72,16 +75,28 @@ class ProductUpdateView(UpdateView):
             )
         return response
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'catalog/product_confirm_delete.html'
     success_url = reverse_lazy('catalog:product_list')
 
-class ProductVersionCreateView(CreateView):
+    def dispatch(self, request, *args, **kwargs):
+        product = self.get_object()
+        if product.created_by != request.user:
+            return HttpResponseForbidden("Вы не можете удалить этот товар.")
+        return super().dispatch(request, *args, **kwargs)
+
+class ProductVersionCreateView(LoginRequiredMixin, CreateView):
     model = ProductVersion
     form_class = ProductVersionForm
     template_name = 'catalog/productversion_form.html'
     success_url = reverse_lazy('catalog:product_list')
+
+    def dispatch(self, request, *args, **kwargs):
+        product = get_object_or_404(Product, slug=kwargs.get('slug'))
+        if product.created_by != request.user:
+            return HttpResponseForbidden("Вы не можете добавлять версии для этого товара.")
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         product = form.cleaned_data['product']
@@ -89,11 +104,17 @@ class ProductVersionCreateView(CreateView):
             ProductVersion.objects.filter(product=product).update(is_current=False)
         return super().form_valid(form)
 
-class ProductVersionUpdateView(UpdateView):
+class ProductVersionUpdateView(LoginRequiredMixin, UpdateView):
     model = ProductVersion
     form_class = ProductVersionForm
     template_name = 'catalog/productversion_form.html'
     success_url = reverse_lazy('catalog:product_list')
+
+    def dispatch(self, request, *args, **kwargs):
+        product_version = self.get_object()
+        if product_version.product.created_by != request.user:
+            return HttpResponseForbidden("Вы не можете обновлять эту версию товара.")
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         product = form.cleaned_data['product']
