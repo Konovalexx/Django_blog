@@ -18,10 +18,12 @@
             Нет активных версий
         {% endif %}
     </p>
-    {% if user.is_authenticated %}
-        <a href="{% url 'catalog:product_update' product.slug %}" class="btn btn-secondary">Редактировать</a>
+
+    {% if user.is_authenticated and product.created_by == user %}
+        <a href="{% url 'catalog:product_update' product.slug %}" class="btn btn-warning">Редактировать</a>
         <a href="{% url 'catalog:product_delete' product.slug %}" class="btn btn-danger">Удалить</a>
     {% endif %}
-    <a href="{% url 'catalog:product_list' %}" class="btn btn-primary">Назад к списку</a>
+
+    <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Назад к списку</a>
 </div>
 {% endblock %}

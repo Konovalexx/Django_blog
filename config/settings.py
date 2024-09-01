@@ -110,7 +110,7 @@ EMAIL_HOST = 'smtp.mail.ru'  # Исправлено
 EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'konovalex@mail.ru'
-EMAIL_HOST_PASSWORD = 'parol'
+EMAIL_HOST_PASSWORD = 'VBEAzSQhiYA6r6RHUvaX'
 DEFAULT_FROM_EMAIL = 'konovalex@mail.ru'
 
 # URL-адрес сайта
@@ -120,3 +120,4 @@ from django.urls import reverse_lazy
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = reverse_lazy('catalog:product_list')
+
