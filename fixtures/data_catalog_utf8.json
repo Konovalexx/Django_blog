@@ -1,0 +1,244 @@
+[
+    {
+        "model": "catalog.category",
+        "pk": 1,
+        "fields": {
+            "name": "Сельхозживотные",
+            "description": "Тут представлены МРС, КРС, свиньи и т.д."
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 2,
+        "fields": {
+            "name": "Рыбы",
+            "description": "Рыбы и водная биота для аквакультуры"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 3,
+        "fields": {
+            "name": "Экзотические животные",
+            "description": "В этой категории представлены экзоты"
+        }
+    },
+    {
+        "model": "catalog.category",
+        "pk": 4,
+        "fields": {
+            "name": "Птицы",
+            "description": "Категория по продаже кур, уток, перепелов и т.д.."
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 1,
+        "fields": {
+            "title": "Курица ГМО",
+            "slug": "kurica-gmo",
+            "content": "Забирать самовывозом, не можем поймать. Да и страшновато как-то ловить. Выведена лабораторным путем, с добавлением генов крокодила. Питается мясом и рыбой.",
+            "preview": "catalog/previews/3996e1a12e1811ee96d84ad64b19119b_upscaled_jRQirWe_GAike8o.jpg",
+            "created_at": "2024-09-04T17:14:34.393Z",
+            "is_published": true,
+            "views_count": 6,
+            "category": 3,
+            "price": 1000000,
+            "created_by": 3
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 2,
+        "fields": {
+            "title": "Еж",
+            "slug": "ez",
+            "content": "Еж обыкновенный, лесной. Можно использовать для ловли змей, мышей и крыс на усадьбе. Кормить кормом для кошек и мясом",
+            "preview": "catalog/previews/ezh-sayt1.wm_XBlAczK.jpg",
+            "created_at": "2024-09-04T17:15:49.791Z",
+            "is_published": true,
+            "views_count": 4,
+            "category": 1,
+            "price": 5000,
+            "created_by": 2
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 3,
+        "fields": {
+            "title": "Корова",
+            "slug": "korova",
+            "content": "Высокоудойная корова, цвет черно-белый. При правильном кормлении дает не меньше 20 литров молока в сутки.",
+            "preview": "catalog/previews/images_tim91VW.jpg",
+            "created_at": "2024-09-05T05:45:25.121Z",
+            "is_published": true,
+            "views_count": 1,
+            "category": 1,
+            "price": 200000,
+            "created_by": 2
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 4,
+        "fields": {
+            "title": "Коза",
+            "slug": "koza",
+            "content": "Коза белая, среднеразмерная. Высокоудойная. Прыгает вверх на 230 см.",
+            "preview": "catalog/previews/images_1_vBhptcv.jpg",
+            "created_at": "2024-09-05T05:46:22.962Z",
+            "is_published": true,
+            "views_count": 0,
+            "category": 1,
+            "price": 30000,
+            "created_by": 2
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 5,
+        "fields": {
+            "title": "Кабан-осеменитель",
+            "slug": "kaban-osemenitel",
+            "content": "Могучий кабан-осеменитель, вес 450 кг. Зовут Полтинником, переименован из Пятачка",
+            "preview": "catalog/previews/images_2.jpg",
+            "created_at": "2024-09-05T05:48:12.463Z",
+            "is_published": false,
+            "views_count": 0,
+            "category": 1,
+            "price": 300000,
+            "created_by": 2
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 6,
+        "fields": {
+            "title": "Ежик ГМО",
+            "slug": "ezhik-gmo",
+            "content": "Продам смеющегося ежа. Куплен в лаборатории ГМО организмов за 500 000 рублей. Задолбал ржать. Таскает домой подозрительные грибы и траву их ест. И ржет",
+            "preview": "catalog/previews/c67a47934fe311eeb5264659bdca6a39_upscaled_jERRsRj.jpg",
+            "created_at": "2024-09-05T05:49:43.274Z",
+            "is_published": true,
+            "views_count": 1,
+            "category": 3,
+            "price": 100,
+            "created_by": 2
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 7,
+        "fields": {
+            "title": "Рыба-мутант",
+            "slug": "ryba-mutant",
+            "content": "Продам рыбу-мутанта. Выведена в лаборатории с добавлением генов макаки.  Почему-то постоянно мигает, и смотрит из аквариума в телевизор и на людей. Нервирует, поэтому продам недорого",
+            "preview": "catalog/previews/images_3_vXc9aw1.jpg",
+            "created_at": "2024-09-05T05:52:21.571Z",
+            "is_published": true,
+            "views_count": 2,
+            "category": 3,
+            "price": 30000,
+            "created_by": 3
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 8,
+        "fields": {
+            "title": "Енот импортный",
+            "slug": "enot-importnyj",
+            "content": "Называется Тануки. Привезен из Японии.  Модератор почему-то не хочет пропускать его фотографию!",
+            "preview": "",
+            "created_at": "2024-09-05T05:53:53.722Z",
+            "is_published": true,
+            "views_count": 0,
+            "category": 3,
+            "price": 200000,
+            "created_by": 3
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 9,
+        "fields": {
+            "title": "Макака",
+            "slug": "makaka",
+            "content": "Продам макаку. Подарили. Вес 25 кг. В день съедает 3 кг фруктов и 1 кг мяса (предпочитает крольчатину). Веселая, прикольная, кидается камнями, мусором и прочей гадостью и прыгает. Сама ловит кур, кроликов и приносит домой. Иногда носит деньги.",
+            "preview": "catalog/previews/KMO_121006_03711_1_t218_105126_gD2UYj4.jpg",
+            "created_at": "2024-09-05T05:55:26.984Z",
+            "is_published": true,
+            "views_count": 2,
+            "category": 1,
+            "price": 1000000,
+            "created_by": 3
+        }
+    },
+    {
+        "model": "catalog.product",
+        "pk": 10,
+        "fields": {
+            "title": "Козино поселка \"Путь Ильича\"",
+            "slug": "kozino",
+            "content": "Не подумайте, что мы приглашаем играть на деньги!  Игра на деньги давно запрещена нашим законодательством. В козино (проверочное слова - коза) мы играем исключительно на коз.   Коз Вы можете приобрести на входе в козино по льготной цене 20000 тысяч за 1 козу. Также в качестве более мелкого средства играть можно на куриц по курсу 1 коза = 40 кур.    Также в нашем козино можно выпить, спеть в караоке и покурить кальян. Имеется и виртуальная версия козино - игра идет на крипокоз и крипокур.                       ПРИМЕЧАНИЕ МОДЕРАТОРА: Степаныч, задолбал постить свое козино. Удалю нафиг. АВТОР: Уважаймый Иван Иннокентьевич! Заходите к нам в козино, всегда Вам рады, 5 кур для игры и кальян в подарок",
+            "preview": "catalog/previews/14a7934d912811ee9f86429f31467427_upscaled_QPhuoei.jpg",
+            "created_at": "2024-09-05T05:57:19.520Z",
+            "is_published": true,
+            "views_count": 5,
+            "category": 1,
+            "price": 500,
+            "created_by": 3
+        }
+    },
+    {
+        "model": "catalog.productversion",
+        "pk": 1,
+        "fields": {
+            "product": 2,
+            "version_number": "1",
+            "version_name": "Просто еж",
+            "is_current": true
+        }
+    },
+    {
+        "model": "catalog.productversion",
+        "pk": 2,
+        "fields": {
+            "product": 1,
+            "version_number": "3",
+            "version_name": "Глубоко генно-модифицированный организм",
+            "is_current": true
+        }
+    },
+    {
+        "model": "catalog.productversion",
+        "pk": 3,
+        "fields": {
+            "product": 7,
+            "version_number": "3",
+            "version_name": "ГМО-рыба с генами макаки",
+            "is_current": true
+        }
+    },
+    {
+        "model": "catalog.productversion",
+        "pk": 4,
+        "fields": {
+            "product": 9,
+            "version_number": "1",
+            "version_name": "Просто макака из джунглей, фиг знает",
+            "is_current": true
+        }
+    },
+    {
+        "model": "catalog.productversion",
+        "pk": 5,
+        "fields": {
+            "product": 10,
+            "version_number": "1",
+            "version_name": "Новое казино",
+            "is_current": true
+        }
+    }
+]

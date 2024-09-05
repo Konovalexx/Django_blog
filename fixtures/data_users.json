@@ -1,0 +1,70 @@
+[
+  {
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$IkokOFUcmWD4N8SRbptKUh$GygxDh1PXrKVFqbJD73Sk8J5yEqyBPGHKWV0RSsPnL0=",
+      "last_login": "2024-09-05T04:43:05.761Z",
+      "is_superuser": true,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-09-04T17:04:41.720Z",
+      "email": "admin@admin.com",
+      "avatar": "",
+      "phone_number": null,
+      "country": null,
+      "email_verified": true,
+      "email_verification_token": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$sk1OllKRuRis44pQ1i9W7p$QM4+7kIoDOfvkhDqT+kST1UuIdxCGszsTuDf2zhc2tk=",
+      "last_login": "2024-09-05T05:58:06.254Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-04T17:09:42Z",
+      "email": "konovalex@mail.ru",
+      "avatar": "",
+      "phone_number": "89644415067",
+      "country": "Россия",
+      "email_verified": true,
+      "email_verification_token": "",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.customuser",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$grp7mnTgqr1jPwpkeyaVFc$1BCWMdZUcxTirOsp+5ILD3a3DppkFLYNwkmvcpIZQL8=",
+      "last_login": "2024-09-05T05:59:20.520Z",
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-09-04T17:11:39.282Z",
+      "email": "KotInnokentii@yandex.ru",
+      "avatar": "",
+      "phone_number": "",
+      "country": "",
+      "email_verified": true,
+      "email_verification_token": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]
