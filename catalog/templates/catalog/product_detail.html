@@ -5,6 +5,10 @@
     <h1>{{ product.title }}</h1>
     {% if product.preview %}
         <img src="{{ product.preview.url }}" class="img-fluid" alt="{{ product.title }}" style="max-width: 600px; width: 100%;">
+    {% else %}
+        <div class="img-fluid d-flex align-items-center justify-content-center" style="max-width: 600px; width: 100%; height: 400px; background-color: #f8f9fa;">
+            <span class="text-muted">Нет фотографии</span>
+        </div>
     {% endif %}
     <p>{{ product.content }}</p>
     <p><strong>Цена:</strong> {{ product.price }} руб.</p>
