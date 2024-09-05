@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.http import HttpResponseForbidden
 from catalog.models import Product, ProductVersion
-from catalog.forms import ProductForm, ProductVersionForm
+from catalog.forms import ProductForm, ProductVersionForm, ProductModeratorForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 
@@ -46,13 +46,19 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
-    form_class = ProductForm
     template_name = 'catalog/product_form.html'
     success_url = reverse_lazy('catalog:product_list')
 
+    def get_form_class(self):
+        product = self.get_object()
+        if product.created_by != self.request.user and self.request.user.groups.filter(name='Moderators').exists():
+            self.template_name = 'catalog/product_form_moder.html'
+            return ProductModeratorForm
+        return ProductForm
+
     def dispatch(self, request, *args, **kwargs):
         product = self.get_object()
-        if product.created_by != request.user:
+        if product.created_by != request.user and not request.user.groups.filter(name='Moderators').exists():
             return HttpResponseForbidden("Вы не можете редактировать этот товар.")
         return super().dispatch(request, *args, **kwargs)
 
@@ -82,7 +88,7 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
 
     def dispatch(self, request, *args, **kwargs):
         product = self.get_object()
-        if product.created_by != request.user:
+        if product.created_by != request.user and not request.user.groups.filter(name='Moderators').exists():
             return HttpResponseForbidden("Вы не можете удалить этот товар.")
         return super().dispatch(request, *args, **kwargs)
 
@@ -94,7 +100,7 @@ class ProductVersionCreateView(LoginRequiredMixin, CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         product = get_object_or_404(Product, slug=kwargs.get('slug'))
-        if product.created_by != request.user:
+        if product.created_by != request.user and not request.user.groups.filter(name='Moderators').exists():
             return HttpResponseForbidden("Вы не можете добавлять версии для этого товара.")
         return super().dispatch(request, *args, **kwargs)
 
@@ -112,7 +118,7 @@ class ProductVersionUpdateView(LoginRequiredMixin, UpdateView):
 
     def dispatch(self, request, *args, **kwargs):
         product_version = self.get_object()
-        if product_version.product.created_by != request.user:
+        if product_version.product.created_by != request.user and not request.user.groups.filter(name='Moderators').exists():
             return HttpResponseForbidden("Вы не можете обновлять эту версию товара.")
         return super().dispatch(request, *args, **kwargs)
 

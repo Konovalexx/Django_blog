@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load group_filters %}
+
 {% block content %}
 <div class="container">
     <div class="row text-center">
@@ -19,8 +21,10 @@
                     {% endif %}
                     <a href="{% url 'catalog:product_detail' product.slug %}" class="btn btn-primary">Подробнее</a>
                     {% if user.is_authenticated %}
-                        {% if product.created_by == user %}
+                        {% if product.created_by == user or user|is_moderator %}
                             <a href="{% url 'catalog:product_update' product.slug %}" class="btn btn-secondary">Редактировать</a>
+                        {% endif %}
+                        {% if product.created_by == user %}
                             <a href="{% url 'catalog:product_delete' product.slug %}" class="btn btn-danger">Удалить</a>
                         {% endif %}
                     {% endif %}

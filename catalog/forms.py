@@ -31,3 +31,12 @@ class ProductVersionForm(forms.ModelForm):
         widgets = {
             'is_current': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
+
+class ProductModeratorForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['category', 'is_published', 'content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 4}),
+            'is_published': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        }

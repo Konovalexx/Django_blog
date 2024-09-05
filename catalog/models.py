@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.db import connection
 from django.conf import settings
+from django.core.exceptions import PermissionDenied
+
 
 class Category(models.Model):
     @classmethod
@@ -27,6 +29,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     @classmethod
@@ -61,7 +64,7 @@ class Product(models.Model):
         help_text="Загрузите изображение превью товара:",
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
-    is_published = models.BooleanField(default=True, verbose_name="Признак публикации")
+    is_published = models.BooleanField(default=False, verbose_name="Признак публикации")  # Поле по умолчанию False
     views_count = models.PositiveIntegerField(default=0, verbose_name="Количество просмотров")
     category = models.ForeignKey(
         Category,
@@ -85,6 +88,13 @@ class Product(models.Model):
         null=True,
     )
 
+    class Meta:
+        permissions = [
+            ("can_unpublish_product", "Может отменить публикацию продукта"),
+            ("can_change_product_description", "Может изменить описание любого продукта"),
+            ("can_change_product_category", "Может изменить категорию любого продукта"),
+        ]
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
@@ -92,6 +102,19 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    def can_moderate(self, user):
+        """Проверка прав на модерирование продукта."""
+        if user.has_perm('catalog.change_product'):
+            return True
+        raise PermissionDenied("У вас нет прав на изменение этого продукта.")
+
+    def can_unpublish(self, user):
+        """Проверка прав на отмену публикации продукта."""
+        if user.has_perm('catalog.can_unpublish_product'):
+            return True
+        raise PermissionDenied("У вас нет прав на отмену публикации этого продукта.")
+
 
 class ProductVersion(models.Model):
     product = models.ForeignKey(
