@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 <div class="container">
     <h1>Контакты</h1>
-    <p>Здесь будет информация о ваших контактах.</p>
+    <p>По поводу покупки жилья в нашем поселке писать администратору.</p>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{% get_media_prefix %}catalog/photo/country.png" alt="Country Image" class="img-fluid" style="max-width: 600px;">
+        </div>
+        <div class="col-md-6">
+            <img src="{% get_media_prefix %}catalog/photo/country2.png" alt="Country Image 2" class="img-fluid" style="max-width: 600px;">
+        </div>
+    </div>
 </div>
 {% endblock %}
