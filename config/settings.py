@@ -1,17 +1,20 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+# Загрузка переменных из .env файла
+load_dotenv()
 
 # Определение базовой директории проекта
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Секретный ключ для проекта Django. 
-# В продакшене его следует хранить в защищённом месте.
-SECRET_KEY = 'django-insecure-=d%6up6murt+28z1)=_cjwe=g6))iysv&g6u$dhx8l$@-^obqs'
+# Секретный ключ для проекта Django
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # Включение отладки. В продакшене DEBUG должен быть False.
-DEBUG = True
+DEBUG = os.getenv('DEBUG') == 'True'
 
-# Список разрешённых хостов для вашего проекта.
+# Список разрешённых хостов для вашего проекта
 ALLOWED_HOSTS = []
 
 # Определение установленных приложений
@@ -62,11 +65,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'screencast',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
 
@@ -106,18 +109,45 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 # Настройки email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mail.ru'  # Исправлено
-EMAIL_PORT = 2525
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'konovalex@mail.ru'
-EMAIL_HOST_PASSWORD = 'parol'
-DEFAULT_FROM_EMAIL = 'konovalex@mail.ru'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
 # URL-адрес сайта
-SITE_URL = 'http://localhost:8000'
+SITE_URL = os.getenv('SITE_URL')
 
 from django.urls import reverse_lazy
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = reverse_lazy('catalog:product_list')
 
+# Добавление настроек для Redis (вариант для Джанго 5)
+CACHE_ENABLED = True
+if CACHE_ENABLED:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django_redis.cache.RedisCache',
+            'LOCATION': 'redis://127.0.0.1:6379/1',
+            'OPTIONS': {
+                'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            }
+        }
+    }
+
+# Еще рабочий вариант для подключения 5 версии
+#CACHES = {
+#    'default': {
+#        'BACKEND': 'django_redis.cache.RedisCache',
+#        'LOCATION': 'redis://127.0.0.1:6379/1',
+#        'OPTIONS': {
+#            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#        }
+#    }
+#}
+
+# Настройки для сессий через Redis (опционально)
+#SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+#SESSION_CACHE_ALIAS = "default"

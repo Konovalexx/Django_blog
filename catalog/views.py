@@ -5,11 +5,16 @@ from catalog.models import Product, ProductVersion
 from catalog.forms import ProductForm, ProductVersionForm, ProductModeratorForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
+from catalog.services import get_products_from_cache
 
 class ProductListView(ListView):
     model = Product
     template_name = 'catalog/product_list.html'
     context_object_name = 'products'
+
+    def get_queryset(self):
+        """Получаем список товаров из кэша или базы данных."""
+        return get_products_from_cache()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
