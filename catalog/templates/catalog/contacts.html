@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static %}  <!-- Добавьте эту строку -->
 
 {% block content %}
 <div class="container">
     <h1>Контакты</h1>
-    <p>По поводу покупки жилья в нашем поселке писать администратору. Используется летоисчисление по новому стилю. По старому сейчас 2074 годr</p>
+    <p>По поводу сотрудничества и других вопросов, пишите администратору блога.</p>
     <div class="row">
         <div class="col-md-6">
-            <img src="{% get_media_prefix %}catalog/photo/country.png" alt="Country Image" class="img-fluid" style="max-width: 600px;">
+            <img src="{% static 'catalog/photo/contact1.png' %}" alt="Contact Image 1" class="img-fluid" style="max-width: 600px;">
         </div>
         <div class="col-md-6">
-            <img src="{% get_media_prefix %}catalog/photo/country2.png" alt="Country Image 2" class="img-fluid" style="max-width: 600px;">
+            <img src="{% static 'catalog/photo/contact2.png' %}" alt="Contact Image 2" class="img-fluid" style="max-width: 600px;">
         </div>
     </div>
 </div>

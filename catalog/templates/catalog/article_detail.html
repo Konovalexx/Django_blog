@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1>{{ article.title }}</h1>
+
+        {% if article.preview %}
+          <img src="{{ article.preview.url }}" alt="{{ article.title }}" class="img-fluid mb-3">
+        {% endif %}
+
+        <p>{{ article.content }}</p>
+        <p>Просмотров: <strong>{{ article.views_count }}</strong></p>
+        <p>Дата публикации: <strong>{{ article.created_at|date:"Y-m-d" }}</strong></p>
+
+        {% if article.is_published %}
+          <span class="badge bg-success">Опубликовано</span>
+        {% else %}
+          <span class="badge bg-warning">Черновик</span>
+        {% endif %}
+
+        <div class="mt-3">
+          {% if user.is_authenticated %}
+            {% if user == article.blog.owner or is_moderator %}
+              <a href="{% url 'catalog:article_update' article.slug %}" class="btn btn-secondary me-2">Редактировать</a>
+              <a href="{% url 'catalog:article_delete' article.slug %}" class="btn btn-danger">Удалить</a>
+            {% else %}
+              <p class="text-warning">Вы не имеете прав для редактирования этой статьи.</p>
+            {% endif %}
+          {% else %}
+            <p>Пожалуйста, <a href="{% url 'catalog:login' %}">войдите</a> в систему, чтобы редактировать статьи.</p>
+          {% endif %}
+        </div>
+
+        <a href="{% url 'catalog:article_list' %}" class="btn btn-primary mt-3">Назад к списку статей</a>
+
+        <hr>
+
+        <!-- Комментарии -->
+        <h2 class="mt-4">Комментарии</h2>
+
+        {% for comment in comments %}
+          <div class="comment mb-3 p-3 bg-light rounded">
+            <strong>{{ comment.user.username }}</strong> <em class="text-muted">{{ comment.created_at|date:"Y-m-d H:i" }}</em>
+            <p>{{ comment.content }}</p>
+
+            <!-- Проверяем права на удаление комментария -->
+            {% if comment.user == user or is_moderator %}
+              <a href="{% url 'delete_comment' comment.id %}" class="text-danger">Удалить</a>
+            {% endif %}
+          </div>
+        {% empty %}
+          <p>Комментариев пока нет. Будьте первым, кто оставит комментарий!</p>
+        {% endfor %}
+
+        <!-- Форма для добавления комментария -->
+        <div class="mt-4">
+          {% if user.is_authenticated %}
+            <h3>Оставить комментарий</h3>
+            <form method="post">
+              {% csrf_token %}
+              {{ comment_form.as_p }}
+              <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+          {% else %}
+            <p>Пожалуйста, <a href="{% url 'catalog:login' %}">войдите</a>, чтобы оставить комментарий.</p>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

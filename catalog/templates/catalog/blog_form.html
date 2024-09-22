@@ -1,0 +1,51 @@
+{% load custom_filters %}
+{% block content %}
+  <h1>{% if form.instance.pk %}Редактировать блог{% else %}Создать блог{% endif %}</h1>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <!-- Выводим общие ошибки формы -->
+    {{ form.non_field_errors }}
+
+    <!-- Поле заголовка блога -->
+    <div class="form-group">
+      {{ form.title.label_tag }}
+      {{ form.title|add_class:"form-control" }}
+      {{ form.title.errors }}
+    </div>
+
+    <!-- Поле описания блога -->
+    <div class="form-group">
+      {{ form.description.label_tag }}
+      {{ form.description|add_class:"form-control" }}
+      {{ form.description.errors }}
+    </div>
+
+    <!-- Если есть изображение блога -->
+    {% if form.image %}
+    <div class="form-group">
+      {{ form.image.label_tag }}
+      {{ form.image|add_class:"form-control-file" }}
+      {{ form.image.errors }}
+    </div>
+    {% endif %}
+
+    <!-- Кнопка сохранения -->
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+  </form>
+
+  <!-- Показать информацию о блоге, если это редактирование -->
+  {% if form.instance.pk %}
+    <hr>
+    <h2>Информация о блоге</h2>
+    <p><strong>Заголовок:</strong> {{ form.instance.title }}</p>
+    <p><strong>Описание:</strong> {{ form.instance.description }}</p>
+
+    <!-- Показ изображения блога, если загружено -->
+    {% if form.instance.image %}
+    <p><strong>Изображение блога:</strong></p>
+    <img src="{{ form.instance.image.url }}" alt="Изображение блога" class="img-fluid">
+    {% endif %}
+  {% endif %}
+{% endblock %}

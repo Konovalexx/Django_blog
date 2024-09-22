@@ -3,18 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}СельхозРынок{% endblock %}</title>
+    <title>{% block title %}Блог{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
     <header>
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-            <h5 class="my-0 mr-md-auto font-weight-normal">Поселок Путь Ильича</h5>
+            <h5 class="my-0 mr-md-auto font-weight-normal">Блог</h5>
             <nav class="ms-5">
-                <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_list' %}">Каталог</a>
+                <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:article_list' %}">Блог</a>
                 <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts' %}">Контакты</a>
                 {% if user.is_authenticated %}
                     <span class="p-2">Привет, {{ user.email }}!</span>
+                    <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:article_create' %}">Добавить статью</a>
                     <form action="{% url 'users:logout' %}" method="post" style="display:inline;">
                         {% csrf_token %}
                         <button type="submit" class="p-2 btn btn-outline-primary">Выход</button>
@@ -26,8 +27,8 @@
         </div>
 
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <h1 class="display-4">Путь Ильича</h1>
-            <p class="lead">Онлайн-платформа сельского рынка</p>
+            <h1 class="display-4">Блог</h1>
+            <p class="lead">Добро пожаловать на наш блог</p>
         </div>
     </header>
 
@@ -49,17 +50,15 @@
             <div class="col-6 col-md">
                 <h5>Категории</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Сельхозживотные</a></li>
-                    <li><a class="text-muted" href="#">Рыбы</a></li>
-                    <li><a class="text-muted" href="#">Экзотические животные</a></li>
-                    <li><a class="text-muted" href="#">Птицы</a></li>
-                    <li><a class="text-muted" href="#">Земноводные и рептилии. Пока товаров нет</a></li>
+                    <li><a class="text-muted" href="#">Тема 1</a></li>
+                    <li><a class="text-muted" href="#">Тема 2</a></li>
+                    <li><a class="text-muted" href="#">Тема 3</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">
                 <h5>Дополнительно</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Мы пишем</a></li>
+                    <li><a class="text-muted" href="#">Новости</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{% if form.instance.pk %}Редактировать{% else %}Создать{% endif %} статью</h1>
+
+  <form method="post" enctype="multipart/form-data">  <!-- Добавлено enctype -->
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}  <!-- Отображение ошибок формы, если есть -->
+
+    <div class="form-group">
+      {{ form.title.label_tag }}
+      <input type="text" name="title" class="form-control" value="{{ form.title.value|default:'' }}">  <!-- Применяем Bootstrap класс -->
+      {{ form.title.errors }}
+    </div>
+
+    <div class="form-group">
+      {{ form.slug.label_tag }}
+      <input type="text" name="slug" class="form-control" value="{{ form.slug.value|default:'' }}">  <!-- Применяем Bootstrap класс -->
+      {{ form.slug.errors }}
+    </div>
+
+    <div class="form-group">
+      {{ form.content.label_tag }}
+      <textarea name="content" class="form-control">{{ form.content.value|default:'' }}</textarea>  <!-- Применяем Bootstrap класс -->
+      {{ form.content.errors }}
+    </div>
+
+    <div class="form-group">
+      {{ form.preview.label_tag }}
+      <input type="file" name="preview" class="form-control-file">  <!-- Применяем Bootstrap класс для загрузки файлов -->
+      {{ form.preview.errors }}
+    </div>
+
+    <div class="form-group">
+      <label for="blog">Выберите блог:</label>
+      <select name="blog" id="blog" class="form-control">
+        {% for blog in blogs %}
+          <option value="{{ blog.id }}" {% if blog.id == form.instance.blog.id %}selected{% endif %}>{{ blog.title }}</option>
+        {% endfor %}
+      </select>
+      <a href="{% url 'catalog:blog_create' %}" class="btn btn-secondary mt-2">Создать блог</a>
+    </div>
+
+    <div class="form-group">
+      <label for="is_published">Опубликовано:</label>
+      <input type="checkbox" name="is_published" id="is_published" {% if form.instance.is_published %}checked{% endif %}>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+  </form>
+
+  <a href="{% url 'catalog:article_list' %}" class="btn btn-secondary mt-3">Назад к списку статей</a>  <!-- Кнопка для возврата к списку статей -->
+{% endblock %}

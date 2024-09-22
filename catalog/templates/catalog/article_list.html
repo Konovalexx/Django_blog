@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+  <h1>Список статей</h1>
+
+  {% if user.is_authenticated %}
+    <div class="mb-3">
+      <form method="GET" class="form-inline">
+        <label for="filter" class="mr-2">Фильтр по:</label>
+        <select name="filter" id="filter" class="form-control mr-2">
+          {% if is_moderator %}
+            <option value="all" {% if request.GET.filter == 'all' or not request.GET.filter %}selected{% endif %}>Все</option>
+          {% endif %}
+          <option value="published" {% if request.GET.filter == 'published' %}selected{% endif %}>Опубликованные</option>
+          <option value="drafts" {% if request.GET.filter == 'drafts' %}selected{% endif %}>Черновики</option>
+          <option value="forum" {% if request.GET.filter == 'forum' %}selected{% endif %}>Все статьи форума</option>
+        </select>
+
+        <!-- Фильтр по блогам -->
+        {% if blogs %}
+        <select name="blog_id" class="form-control ml-2">
+          <option value="">Все блоги</option>
+          {% for blog in blogs %}
+            <option value="{{ blog.id }}" {% if request.GET.blog_id == blog.id|stringformat:"s" %}selected{% endif %}>{{ blog.title }}</option>
+          {% endfor %}
+        </select>
+        {% endif %}
+
+        <button type="submit" class="btn btn-secondary ml-2">Применить</button>
+        <a href="{% url 'catalog:article_list' %}" class="btn btn-light ml-2">Сбросить фильтр</a>
+      </form>
+    </div>
+  {% endif %}
+
+  {% if articles.count > 0 %}
+    <p>Всего статей: {{ articles.count }}</p>
+
+    <div class="row">
+      {% for article in articles %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <a href="{% url 'catalog:article_detail' article.slug %}">
+              {% if article.preview %}
+                <img src="{{ article.preview.url }}" alt="{{ article.title }}" style="height: 200px; width: 100%; object-fit: cover; margin: auto;">
+              {% else %}
+                <div style="height: 200px; display: flex; align-items: center; justify-content: center; border: 1px solid #ccc;">
+                  <span>Нет фото</span>
+                </div>
+              {% endif %}
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">{{ article.title }}</h5>
+              <p class="card-text">Создано: {{ article.created_at|date:"Y-m-d" }}</p>
+              <p class="card-text">Обновлено: {{ article.updated_at|date:"Y-m-d" }}</p>
+              {% if article.is_published %}
+                <span class="badge badge-success">Опубликовано</span>
+              {% else %}
+                <span class="badge badge-warning">Черновик</span>
+              {% endif %}
+              <p>Владелец: {{ article.blog.owner.email|get_username_from_email }}</p>
+
+              {% if user.is_authenticated %}
+                <!-- Кнопки для владельцев и модераторов -->
+                {% if article.blog.owner == user or is_moderator %}
+                  <a href="{% url 'catalog:article_update' article.slug %}" class="btn btn-secondary mt-2">Редактировать</a>
+                  <a href="{% url 'catalog:article_delete' article.slug %}" class="btn btn-danger mt-2">Удалить</a>
+                {% endif %}
+              {% else %}
+                <p>Гость, здравствуй! Зарегистрируйся на нашем сайте и пиши свои статьи и комментируй!</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p>Нет доступных статей.</p>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>Нет статей для выбранного фильтра. <a href="{% url 'catalog:article_create' %}">Создайте новую статью</a>.</p>
+  {% endif %}
+
+  {% if user.is_authenticated %}
+    <a href="{% url 'catalog:article_create' %}" class="btn btn-primary mt-3">Добавить статью</a>
+  {% endif %}
+
+  <!-- Сообщение для незарегистрированных пользователей -->
+  {% if not user.is_authenticated %}
+    <div class="alert alert-info mt-3">
+      <p>Зарегистрируйтесь на сайте, чтобы создавать и комментировать статьи!</p>
+    </div>
+  {% endif %}
+{% endblock %}

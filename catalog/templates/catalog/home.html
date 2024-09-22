@@ -1,24 +1,18 @@
 {% extends 'base.html' %}
-{% load media_filters %}
 
 {% block content %}
 <div class="container">
     <div class="row text-center">
-        {% for product in products %}
+        {% for post in posts %}
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-                {% if product.preview %}
-                <img src="{{ product.preview.url }}" class="card-img-top" alt="{{ product.title }}">
+                {% if post.preview %}
+                <img src="{{ post.preview.url }}" class="card-img-top" alt="{{ post.title }}">
                 {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">{{ product.title }}</h5>
-                    <p class="card-text">{{ product.content|truncatewords:20 }}</p>
-                    {% if product.price %}
-                    <p class="card-text"><strong>Цена:</strong> {{ product.price }} руб.</p>
-                    {% else %}
-                    <p class="card-text text-muted">Цена не указана</p>
-                    {% endif %}
-                    <a href="{% url 'catalog:product_detail' product.slug %}" class="btn btn-primary">Подробнее</a>
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content|truncatewords:20 }}</p>
+                    <a href="{% url 'catalog:article_detail' post.slug %}" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
         </div>
